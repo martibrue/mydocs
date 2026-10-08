@@ -1,0 +1,5 @@
+# Virtuelle Umgebung: wird auf jedem Rechner selbst erzeugt
+.venv/
+
+# Gebaute Website, wird bei Bedarf aus docs/ neu erzeugt
+site/

@@ -1,0 +1,73 @@
+{
+  // Snippet für Anleitungs-Notizen; Kürzel: "anleitung"
+  "Notiz: Anleitung": {
+    "scope": "markdown",          // nur in Markdown-Dateien anbieten
+    "prefix": "anleitung",        // Kürzel, das man tippt
+    "body": [
+      // ${1:...} sind Platzhalter; Tab springt zum nächsten, $0 ist das Ende
+      "# ${1:Titel als Ziel formuliert}",
+      "",
+      "**Wann brauche ich das:** ${2:Anlass}",
+      "**Umgebung:** ${3:Betriebssystem, Programm und Version}",
+      "",
+      "## Voraussetzungen",
+      "",
+      "- ${4}",
+      "",
+      "## Schritte",
+      "",
+      "1. ${5}",
+      "",
+      "## Prüfen",
+      "",
+      "${6:Woran erkenne ich, dass es geklappt hat?}",
+      "",
+      "## Hinweise",
+      "",
+      "${7}",
+      "",
+      "## Quellen",
+      "",
+      "- [${8:Titel}](${9:https://})",
+      "$0"
+    ],
+    "description": "Vorlage für eine Anleitung"
+  },
+
+  // Snippet für Problemlösungs-Notizen; Kürzel: "problem"
+  "Notiz: Problemlösung": {
+    "scope": "markdown",
+    "prefix": "problem",
+    "body": [
+      "# ${1:Symptom in Kurzform}",
+      "",
+      "**Umgebung:** ${2:Betriebssystem, Programm und Version}",
+      "",
+      "## Symptom",
+      "",
+      "${3:Was ist passiert?}",
+      "",
+      "```text",
+      "${4:Exakte Fehlermeldung}",
+      "```",
+      "",
+      "## Ursache",
+      "",
+      "${5}",
+      "",
+      "## Lösung",
+      "",
+      "${6}",
+      "",
+      "## Vorbeugen",
+      "",
+      "${7}",
+      "",
+      "## Quellen",
+      "",
+      "- [${8:Titel}](${9:https://})",
+      "$0"
+    ],
+    "description": "Vorlage für eine Problemlösung"
+  }
+}

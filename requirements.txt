@@ -1,0 +1,2 @@
+# Feste Zensical-Version; Updates bewusst hier ändern und testen
+zensical==0.0.69
