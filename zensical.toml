@@ -10,10 +10,10 @@ site_name = "Meine Doku"
 # repo_name = "user/repo"
 # edit_uri = "edit/main/docs/"
 
-nav = [
-  { "Get started" = "index.md" },
-  { "Markdown in 5min" = "markdown.md" },
-]
+# nav = [
+#  { "Get started" = "index.md" },
+#  { "Markdown in 5min" = "markdown-referenz.md" },
+# ]
 
 # extra_css = ["stylesheets/extra.css"]
 # extra_javascript = ["javascripts/extra.js"]
@@ -107,6 +107,8 @@ pymdownx.inlinehilite = {}
 pymdownx.keys = {}
 pymdownx.magiclink = {}
 pymdownx.mark = {}
+# GitHub-Callouts (> [!NOTE] usw.) in Zensical als Box darstellen
+pymdownx.quotes.callouts = true
 pymdownx.smartsymbols = {}
 # pymdownx.snippets.base_path = "includes"
 pymdownx.superfences.custom_fences = [
@@ -116,3 +118,6 @@ pymdownx.tabbed.alternate_style = true
 pymdownx.tabbed.combine_header_slug = true
 pymdownx.tasklist.custom_checkbox = true
 pymdownx.tilde = {}
+
+[project.plugins.offline]
+enabled = false
