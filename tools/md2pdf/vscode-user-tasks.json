@@ -1,0 +1,32 @@
+{
+    // VS-Code-BENUTZER-Aufgaben (gelten in allen Projekten)
+    // Öffnen mit: Ctrl+Shift+P -> "Tasks: Open User Tasks"
+    "version": "2.0.0",
+    "tasks": [
+        {
+            // Erstellt aus der aktuell geöffneten Markdown-Datei ein PDF
+            "label": "PDF aus Markdown erstellen",
+            "type": "shell",
+            "command": "powershell",
+            "args": [
+                "-ExecutionPolicy", "Bypass",                    // nur für diesen Aufruf
+                "-File", "C:\\_Daten\\Mydocs\\tools\\md2pdf\\make-pdf.ps1",
+                "${file}",                                       // aktuell offene Datei
+                "-Layout", "${input:layout}"                     // Auswahl aus der Liste unten
+            ],
+            "presentation": { "reveal": "always", "clear": true },
+            "problemMatcher": []
+        }
+    ],
+    "inputs": [
+        {
+            // Auswahlliste, die beim Start der Aufgabe erscheint.
+            // Neue Layouts (layouts\<name>.css oder layouts\<name>\) hier ergänzen.
+            "id": "layout",
+            "type": "pickString",
+            "description": "Layout wählen",
+            "options": ["auto", "standard", "kompakt", "gis-bericht"],
+            "default": "auto"
+        }
+    ]
+}

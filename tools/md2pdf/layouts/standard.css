@@ -1,0 +1,59 @@
+/* =========================================================
+   standard.css – Grundlayout für alle PDFs (Pandoc + wkhtmltopdf)
+
+   Wird IMMER geladen. Weitere Layouts (z. B. kompakt.css) oder
+   eine projektspezifische pdf.css werden danach geladen und
+   überschreiben nur die Regeln, die sie selbst enthalten.
+   ========================================================= */
+
+/* --- Schrift ---------------------------------------------
+   Segoe UI ist auf Windows vorinstalliert. Fehlt sie (z. B. auf Linux),
+   wird automatisch die nächste Schrift in der Liste verwendet. */
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  font-size: 10pt;
+  line-height: 1.45;
+  color: #222;
+  margin: 0;
+}
+
+/* --- Titelblock von pandoc ---------------------------------
+   Hat die md-Datei einen YAML-Kopfblock mit "title", setzt pandoc
+   den Titel zusätzlich an den Anfang. Im Standard steht der Titel
+   bereits als #-Überschrift in der Datei, darum ausblenden. */
+#title-block-header { display: none; }
+
+/* --- Überschriften --------------------------------------- */
+h1 { font-size: 18pt; border-bottom: 2px solid #444; padding-bottom: 4px; margin-top: 0; }
+h2 { font-size: 13.5pt; margin-top: 22px; border-bottom: 1px solid #bbb; padding-bottom: 2px; }
+h3 { font-size: 11pt; margin-top: 16px; }
+
+/* --- Überschrift nicht allein am Seitenende -----------------
+   Der Lua-Filter keep-with-next.lua packt jede Überschrift mit dem
+   folgenden Block in <div class="keep">. Dieser Block wird nicht
+   über einen Seitenumbruch getrennt. */
+.keep { page-break-inside: avoid; }
+
+/* --- Manueller Seitenumbruch ------------------------------
+   In der md-Datei mit <div class="pagebreak"></div> einsetzen. */
+.pagebreak { page-break-before: always; }
+
+/* --- Tabellen -------------------------------------------- */
+table { border-collapse: collapse; width: 100%; margin: 8px 0 12px; page-break-inside: avoid; }
+th, td { border: 1px solid #bbb; padding: 4px 6px; text-align: left; vertical-align: top; }
+th { background: #eee; }
+
+/* --- Code- und Formelblöcke ------------------------------ */
+pre { background: #f4f4f4; border: 1px solid #ddd; padding: 6px 8px; font-size: 9pt; page-break-inside: avoid; }
+code { font-family: Consolas, "DejaVu Sans Mono", monospace; }
+
+/* --- Bilder ----------------------------------------------
+   width: Anteil der Seitenbreite. Für grössere/kleinere Bilder
+   diesen Wert anpassen (z. B. 60% oder 85%). */
+img {
+  width: 75%;
+  border: 1px solid #ccc;
+  page-break-inside: avoid;
+}
+figure { margin: 8px 0; page-break-inside: avoid; }
+figcaption { display: none; }   /* Bildtext steht bereits in der Überschrift */

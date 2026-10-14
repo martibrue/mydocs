@@ -1,0 +1,50 @@
+/* =========================================================
+   gis-bericht/style.css – offizielles Berichtslayout GIS Daten AG
+
+   Wird NACH layouts/standard.css geladen und enthält nur die
+   Abweichungen. Vorbild: Word-Vorlage "Dokumentation.docx".
+   ========================================================= */
+
+/* --- Text: Segoe UI, Blocksatz ---------------------------- */
+body { font-size: 10pt; }
+p    { text-align: justify; }
+
+/* --- Dokumenttitel ohne Titelseite --------------------------
+   Ohne YAML-Kopfblock gibt es keine Titelseite. Dann steht der Titel
+   (aus der #-Überschrift) oben auf der ersten Seite. Mit Titelseite
+   blendet das Skript diesen Block wieder aus. */
+#title-block-header { display: block; }
+#title-block-header h1.title {
+  font-size: 18pt;
+  color: #365F91;
+  margin: 0 0 18px 0;
+}
+
+/* --- Überschriften ----------------------------------------
+   Die # -Überschrift der md-Datei wird zum Dokumenttitel (Titelseite,
+   Kopfzeile) und erscheint nicht mehr im Text. ## wird zu Kapitel 1, 2, …
+   (h1 im HTML), ### zu 1.1, 1.2, … (h2). Die Nummern erzeugt pandoc. */
+h1 {
+  font-size: 14pt;
+  border-bottom: none;          /* standard.css setzt Linien – hier nicht */
+  margin-top: 28px;
+  margin-bottom: 12px;
+}
+h2 {
+  font-size: 12pt;
+  border-bottom: none;
+  margin-top: 18px;
+  margin-bottom: 10px;
+}
+h3 { font-size: 10pt; }
+
+/* Kapitelnummer: feste Breite, damit die Titel bündig stehen.
+   Auf oberster Ebene mit Punkt ("1."), wie in der Word-Vorlage. */
+.header-section-number {
+  display: inline-block;
+  min-width: 2.2em;
+}
+h1 > .header-section-number:after { content: "."; }
+
+/* --- Tabellen etwas zurückhaltender als im Standard ------- */
+th { background: #e8edf3; }

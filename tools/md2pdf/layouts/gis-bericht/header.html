@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!--
+  header.html – Kopfzeile ab Seite 2 (pandoc-Vorlage)
+
+  Links:  "Dokumenttyp - „Titel“"   (pandoc setzt Dokumenttyp und Titel aus der md-Datei ein)
+  Achtung: In dieser Datei keine Dollarzeichen in Kommentaren verwenden.
+  Rechts: "Seite X von Y"            (wkhtmltopdf übergibt page/topage in der URL,
+                                      das Skript unten setzt sie in die <span> ein)
+-->
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<style>
+  body { margin: 0; font-family: "Segoe UI", Arial, sans-serif; font-size: 8.5pt; }
+  .kopf { border-bottom: 1px solid #000; padding-bottom: 2pt; overflow: hidden; }
+  .links  { float: left; }
+  .rechts { float: right; }
+</style>
+<script>
+  // wkhtmltopdf ruft diese Seite pro PDF-Seite mit ?page=..&topage=.. auf.
+  // Die Werte werden hier ausgelesen und in die Elemente mit gleicher Klasse geschrieben.
+  function subst() {
+    var vars = {};
+    var teile = document.location.search.substring(1).split('&');
+    for (var i = 0; i < teile.length; i++) {
+      var kv = teile[i].split('=', 2);
+      vars[kv[0]] = decodeURIComponent(kv[1]);
+    }
+    var namen = ['page', 'topage'];
+    for (var n = 0; n < namen.length; n++) {
+      var el = document.getElementsByClassName(namen[n]);
+      for (var j = 0; j < el.length; j++) { el[j].textContent = vars[namen[n]]; }
+    }
+  }
+</script>
+</head>
+<body onload="subst()">
+  <div class="kopf">
+    <span class="links">$if(dokumenttyp)$$dokumenttyp$$else$Dokumentation$endif$ - „$title$“</span>
+    <span class="rechts">Seite <span class="page"></span> von <span class="topage"></span></span>
+  </div>
+</body>
+</html>

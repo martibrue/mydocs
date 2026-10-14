@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<!--
+  cover.html – Titelseite (pandoc-Vorlage)
+
+  pandoc ersetzt die Platzhalter (Name zwischen zwei Dollarzeichen)
+  durch die Werte aus dem YAML-Kopfblock der md-Datei. Abschnitte
+  zwischen "if(name)" und "endif" erscheinen nur, wenn der Wert
+  ausgefüllt ist. Achtung: In dieser Datei keine Dollarzeichen in
+  Kommentaren verwenden, pandoc liest sie sonst als Platzhalter.
+
+  Hier stehen nur Dokumenttyp und Titel. Weitere Teile der Titelseite:
+    cover-header.html  Logo oben rechts (Kopfzeile)
+    cover-footer.html  Verfasser / Version / Datum und Adressblock (Fusszeile)
+
+  Abstände in pt ab dem oberen Textrand (27.5 mm unter der Blattkante).
+  wkhtmltopdf verkleinert die Seite beim Drucken um ca. Faktor 0.84
+  ("smart shrinking"). Die Werte sind so gewählt, dass die Texte nach der
+  Verkleinerung auf der Höhe der Word-Vorlage stehen:
+    Dokumenttyp ca. 72 mm, Titel ca. 90 mm ab Blattkante.
+-->
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>$title$</title>
+<style>
+  /* Abstand oben als padding, nicht als margin: wkhtmltopdf ignoriert
+     (wie Browser beim Drucken) einen margin-top am Anfang einer Seite. */
+  body   { font-family: "Segoe UI", Arial, sans-serif; color: #000; margin: 0; padding-top: 151pt; }
+  .typ   { font-size: 14pt; }
+  .titel { font-size: 20pt; font-weight: bold; color: #365F91; margin-top: 42pt; }
+</style>
+</head>
+<body>
+  <div class="typ">$if(dokumenttyp)$$dokumenttyp$$else$Dokumentation$endif$</div>
+  <div class="titel">$title$</div>
+</body>
+</html>

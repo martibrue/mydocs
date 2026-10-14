@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<!--
+  cover-footer.html – Fusszeile der Titelseite (pandoc-Vorlage)
+
+  Enthält unten auf der Titelseite:
+    1. Block Verfasser / Version / Datum (Werte aus dem YAML-Kopfblock)
+    2. Adressblock GIS Daten AG (Bild)
+
+  Die Fusszeile ist am unteren Seitenrand verankert. Weil sie höher ist als
+  der untere Rand, ragt sie mit CoverFooterSpacing (layout.psd1, negativer
+  Wert) in den Textbereich hinein.
+
+  pandoc ersetzt die Platzhalter (Name zwischen zwei Dollarzeichen).
+  Achtung: In dieser Datei keine Dollarzeichen in Kommentaren verwenden.
+-->
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<style>
+  body { margin: 0; font-family: "Segoe UI", Arial, sans-serif; color: #000; }
+
+  table.meta { border-collapse: collapse; font-size: 10pt; margin-bottom: 22pt; }
+  table.meta td { padding: 1pt 0; vertical-align: top; }
+  table.meta td.label { width: 85pt; }
+  table.meta .klein  { font-size: 8pt; }
+  table.meta .klein td { padding: 0; }
+  table.meta .klein td.datum-label { width: 70pt; white-space: nowrap; }
+
+  img.adresse { width: 80%; }
+</style>
+</head>
+<body>
+  <table class="meta">
+$if(verfasser)$
+    <tr><td class="label">Verfasser</td><td>$verfasser$</td></tr>
+$endif$
+$if(version)$
+    <tr><td class="label">Version</td><td>$version$</td></tr>
+$endif$
+$if(erstellung)$
+    <tr>
+      <td class="label">Datum</td>
+      <td>
+        <table class="klein">
+          <tr><td class="datum-label">Erstellung:</td><td>$erstellung$</td></tr>
+$if(revision)$
+          <tr><td class="datum-label">letzte Revision:</td><td>$revision$</td></tr>
+$endif$
+        </table>
+      </td>
+    </tr>
+$endif$
+  </table>
+
+  <img class="adresse" src="adresse.png" alt="GIS Daten AG – Adressen">
+</body>
+</html>
